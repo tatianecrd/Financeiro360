@@ -2330,7 +2330,8 @@ function renderDash() {
   cats.slice(0,6).forEach(([cat,val])=>{
     legH+=`<div class="legend-item"><div class="ldot" style="background:${CAT_COLORS[cat]||"#555"}"></div><span style="flex:1">${cat}</span><span class="mono" style="font-size:11px;color:var(--muted)">${(val/totS*100).toFixed(1)}%</span></div>`;
   });
-  document.getElementById("donut-legend").innerHTML=legH;
+  const donutLegend = document.getElementById("donut-legend");
+  if(donutLegend) donutLegend.innerHTML=legH;
 
   // Recent
   const recent=[...lanMes].sort((a,b)=>b.data.localeCompare(a.data)||(b.criadoEm||"").localeCompare(a.criadoEm||"")).slice(0,10);
